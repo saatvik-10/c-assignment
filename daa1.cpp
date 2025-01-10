@@ -30,8 +30,6 @@ public:
     void binarySearch_recursive(int l, int r, long int data);
     int partition(int l, int r);
     void quickSort(int l, int r);
-    // void merge(int l, int mid, int r);
-    // void mergeSort(int l, int r);
 };
 
 void record::accept() {
@@ -161,43 +159,6 @@ void record::quickSort(int l, int r) {
     }
 }
 
-// void record::merge(int l, int mid, int r) {
-
-//         int low  = l;
-//         int high = mid + 1;
-
-//         while( low <= mid && high <= r) {
-//             if(uid[low].mobnum <= uid[high].mobnum) {
-//                 low++;
-//             } else {
-//                 high++;
-//             }
-//         }
-
-//         while(low <= mid) {
-//             low++;
-//         }
-
-//         while(high <= r) {
-//             high++;
-//         }
-
-//         // for(int i=l; i<=r; i++) {
-//         //     nums[i] = temp.get(i-l);
-//         // }
-//     }
-
-// void record::mergeSort(int l, int r) {
-//     if (l <= r) return;
-
-//         int mid = l + (r - l) / 2;
-
-//         mergeSort(l, mid);
-//         mergeSort(mid + 1, r);
-
-//         merge(l, mid, r);
-// }
-
 int main() {
     record r1;
     int choice;
@@ -212,9 +173,8 @@ int main() {
         cout << "3. Quick Sort by Mobile Number\n";
         cout << "4. Binary Search by Mobile Number (Iterative)\n";
         cout << "5. Binary Search by Mobile Number (Recursive)\n";
-        // cout << "6. Merge Sort by Mobile Number\n";
-        cout << "7. Display All Records\n";
-        cout << "8. Exit\n";
+        cout << "6. Display All Records\n";
+        cout << "7. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -242,16 +202,11 @@ int main() {
                 r1.binarySearch_recursive(0, r1.n - 1, data);
                 break;
             }
-            // case 6:
-            //     r1.mergeSort(0, r1.n - 1);
-            //     cout << "Data sorted by mobile number using Merge Sort:\n";
-            //     r1.display();
-            //     break;
-            case 7:
+            case 6:
                 cout << "Displaying all records:\n";
                 r1.display();
                 break;
-            case 8:
+            case 7:
                 cout << "Exiting program. Goodbye!\n";
                 return 0;
             default:
