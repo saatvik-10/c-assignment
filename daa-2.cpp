@@ -154,21 +154,30 @@ public:
 };
 
 int main() {
-    graph g1;
-    g1.createHead();
-    g1.display();
-
-    int startNode;
-    cout << "Enter the starting node ID for BFS and DFS: ";
-    cin >> startNode;
-
-    if (startNode >= 0 && startNode < g1.n) {
-        g1.bfs(startNode);
-        g1.dfs(startNode);
-        g1.dfs_recur(startNode);
-    } else {
-        cout << "Invalid starting node.\n";
+	graph g1;
+	g1.createHead();
+    
+    	int choice;
+	cout << "Choose whether you want :-\n1) BFS\n2) DFS\n3) DFS RECURSIVE\n";  
+    	cin >> choice;
+    	
+    	int userId;
+    	cout << "Enter the user id to start the traversal with: " << endl;
+    	cin >> userId;
+    
+    	switch(choice) {
+    		case(1):
+    			g1.bfs(userId);
+   			break;
+    		case(2):
+    			g1.dfs(userId);
+    			break;
+    		case(3):
+    			g1.dfs_recur(userId);
+    			break;
+    		default:
+    			cout << "Please select a correct option and try again!" << endl;
     }
-
+    
     return 0;
 }
