@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <queue>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
 
 class gnode {
@@ -130,6 +127,30 @@ public:
         }
         cout << endl;
     }
+    
+    void dfs_recur(int start) {
+    		cout << "\nDFS Recursive starting from " << head[start]->name << " (" << start << "):\n";
+    		bool visited[n] = {false};
+    		
+    		dfss(start, visited);
+    		
+    		cout << endl;
+    }
+    
+    void dfss(int node, bool visited[]) {
+    		visited[node] = true;
+    		
+    		cout << head[node]->name << "(" << node << ") ";
+    		
+    		gnode *temp = head[node]->next;
+    		
+    		while(temp != nullptr) {
+    			if(!visited[temp->id]) {
+    				dfss(temp->id, visited);
+    			}
+    			temp = temp->next;
+    		} 
+    }
 };
 
 int main() {
@@ -144,6 +165,7 @@ int main() {
     if (startNode >= 0 && startNode < g1.n) {
         g1.bfs(startNode);
         g1.dfs(startNode);
+        g1.dfs_recur(startNode);
     } else {
         cout << "Invalid starting node.\n";
     }
