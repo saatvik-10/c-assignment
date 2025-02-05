@@ -13,7 +13,7 @@ public:
 
         for (int i = 0; i < cities; i++) {
             for (int j = 0; j < cities; j++) {
-                cost[i][j] = 999; // Initialize with a large value (infinity)
+                cost[i][j] = 999; // to initialize with a large value
             }
         }
     }
@@ -26,13 +26,13 @@ void graph::create() {
     char ch;
 
     for (int i = 0; i < cities; i++) {
-        for (int j = i + 1; j < cities; j++) {  // Avoid redundant input
+        for (int j = i + 1; j < cities; j++) {  // to avoid redundant input
             cout << "Is there a connection between " << i << " and " << j << "? (y/n): ";
             cin >> ch;
             if (ch == 'y') {
                 cout << "Enter the cost of edge: ";
                 cin >> cost[i][j];
-                cost[j][i] = cost[i][j]; // Make it undirected
+                cost[j][i] = cost[i][j]; // to make it undirected
             }
         }
     }
@@ -53,7 +53,7 @@ void graph::display() {
 
 int graph::prims_algo(int st) {
     int nearest[10];
-    bool inMST[10] = {false}; // Track included vertices
+    bool inMST[10] = {false}; // to track included vertices
     int minEdge[10];
     int minCost = 0;
 
@@ -67,7 +67,7 @@ int graph::prims_algo(int st) {
     for (int i = 0; i < cities; i++) {
         int min = 999, index = -1;
 
-        // Find the vertex with the minimum edge cost
+        // to find the vertex with the min. edge cost
         for (int j = 0; j < cities; j++) {
             if (!inMST[j] && minEdge[j] < min) {
                 min = minEdge[j];
@@ -86,7 +86,7 @@ int graph::prims_algo(int st) {
         if (nearest[index] != -1)
             cout << "Edge: " << nearest[index] << " - " << index << " Cost: " << min << endl;
 
-        // Update the minimum edge cost for adjacent vertices
+        // to update the minimum edge cost for adj. vertices
         for (int j = 0; j < cities; j++) {
             if (!inMST[j] && cost[index][j] < minEdge[j]) {
                 minEdge[j] = cost[index][j];
