@@ -5,9 +5,9 @@ using namespace std;
 int x[20]; // Array to store queen positions
 int n; // Number of queens
 
-bool Place(int k, int i) {  
-    for (int j = 1; j < k; j++) {  
-        if (x[j] == i || abs(x[j] - i) == abs(j - k))  
+bool Place(int r, int c) {  
+    for (int i = 1; i < r; i++) {  
+        if (x[i] == c || abs(x[i] - c) == abs(i - r))  
             return false;  // Conflict found
     }
     return true;  // Safe to place queen
@@ -27,14 +27,14 @@ void PrintSolution() {
     cout << "---------------------\n";
 }
 
-void NQueen(int k) {  
+void NQueen(int r) {  
     for (int i = 1; i <= n; i++) {  
-        if (Place(k, i)) {  
-            x[k] = i;  // Place queen
-            if (k == n)  
+        if (Place(r, i)) {  
+            x[r] = i;  // Place queen
+            if (r == n)  
                 PrintSolution();  // Found solution
             else  
-                NQueen(k + 1);  // Move to next row
+                NQueen(r + 1);  // Move to next row
         }
     }
 }
